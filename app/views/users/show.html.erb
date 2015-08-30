@@ -1,19 +1,21 @@
 <br>
 
 <div class="jumbotron">
-  <h2><%= @user.name %></h2>
-  <h4><%= @user.email %></h4>
-  <small>
-    account created <%= @user.created_at.strftime("%m/%d/%Y") %>
-    <br>
-    last signed in <%= time_ago_in_words(@user.created_at) %> ago
-  <small>
 
-<p>
-  <br>
-      <%= link_to "edit user profile", edit_user_registration_path, class: 'btn btn-primary' %>
-</p>
+    <%= image_tag(current_user.avatar.profile.url) if current_user.avatar? %>
 
+      <h2><%= @user.name %></h2>
+      <h4><%= @user.email %></h4>
+        <small>
+          account created <%= @user.created_at.strftime("%m/%d/%Y") %>
+          <br>
+          last signed in <%= time_ago_in_words(@user.created_at) %> ago
+        </small>
+        <p>
+        <br>
+          <%= link_to "edit user profile", edit_user_registration_path, class: 'btn btn-primary' %>
+        </p>
+    
 </div>
 
 <div class="row">
