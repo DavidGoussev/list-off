@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
       redirect_to @user
     else
       flash[:error] = "error saving item, try again!"
-      redirect_to @user
+      render 'users/show'
     end
   end
 

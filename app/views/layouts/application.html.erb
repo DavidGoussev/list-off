@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>list-off</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
+<head>
+  <title>list-off</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
   <div class="container">
     <ul class="nav nav-tabs">
-         <li><%= link_to "list-off", root_path %></li>
-         <li><%= link_to "about", about_path %></li>
+      <li><%= link_to "list-off", root_path %></li>
+      <li><%= link_to "about", about_path %></li>
 
-         <div class="pull-right user-info">
-               <% if current_user %>
-                <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
+      <div class="pull-right user-info">
+        <% if current_user %>
+        <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
 
-                hello <%= link_to (current_user.name || current_user.email), user_path(current_user) %>! <%= link_to "sign out", destroy_user_session_path, method: :delete %>
+        hello <%= link_to (current_user.name || current_user.email), user_path(current_user) %>! <%= link_to "sign out", destroy_user_session_path, method: :delete %>
 
-              <% else %>
-                  <%= link_to "sign in", new_user_session_path %> or
-                  <%= link_to "sign up", new_user_registration_path %>
-              <% end %>
-         </div>
+        <% else %>
+        <%= link_to "sign in", new_user_session_path %> or
+        <%= link_to "sign up", new_user_registration_path %>
+        <% end %>
+      </div>
 
-       </ul>
+    </ul>
+    <%= render partial: 'layouts/flash', locals: { flash: flash } %>
 
-
-   <%= yield %>
-    </div>
-  </body>
+    <%= yield %>
+  </div>
+</body>
 </html>
