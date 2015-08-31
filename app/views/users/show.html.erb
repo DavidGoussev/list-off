@@ -1,21 +1,41 @@
 <br>
 
-<div class="jumbotron">
+<div class="row">
+  <div class="col-md-4">
+    <div class="jumbotron">
 
-    <%= image_tag(current_user.avatar.profile.url) if current_user.avatar? %>
+        <%= image_tag(current_user.avatar.profile.url) if current_user.avatar? %>
 
-      <h2><%= @user.name %></h2>
-      <h4><%= @user.email %></h4>
-        <small>
-          account created <%= @user.created_at.strftime("%m/%d/%Y") %>
-          <br>
-          last signed in <%= time_ago_in_words(@user.created_at) %> ago
-        </small>
-        <p>
-        <br>
-          <%= link_to "edit user profile", edit_user_registration_path, class: 'btn btn-primary' %>
-        </p>
-    
+          <h2><%= @user.name %></h2>
+          <h4><%= @user.email %></h4>
+            <small>
+              account created <%= @user.created_at.strftime("%m/%d/%Y") %>
+              <br>
+              last signed in <%= time_ago_in_words(@user.created_at) %> ago
+              <br>
+              <%= pluralize(@user.items.count, 'to-do item') %>
+            </small>
+            <p>
+            <br>
+              <%= link_to "edit user profile", edit_user_registration_path, class: 'btn btn-primary' %>
+            </p>
+
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="jumbotron">
+        <h2>to-do items</h2>
+          <p>
+            <% @user.items.each do |item| %>
+                  <%= render partial: 'items/item', locals: { item: item } %>
+            <% end %>
+          </p>
+          <p> <%= render partial: 'items/form', locals: { user: @user } %></p>
+
+    </div>
+  </div>
+
 </div>
 
 <div class="row">

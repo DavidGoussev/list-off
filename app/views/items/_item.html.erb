@@ -1,0 +1,5 @@
+<h4><%= item.name %> </h4>
+    <small>
+        submitted <%= time_ago_in_words(item.created_at) %> ago
+        | <%= link_to "delete", [item.user, item], method: :delete %>
+    </small>
