@@ -4,7 +4,7 @@ require 'faker'
     user = User.new(
       name:     Faker::Name.name,
       email:    Faker::Internet.email,
-      password: Faker::Lorem.characters(6)
+      password: Faker::Lorem.characters(8)
     )
     user.skip_confirmation!
     user.save!
@@ -14,7 +14,7 @@ require 'faker'
   50.times do
     item = Item.create!(
       user:   users.sample,
-      item:   Faker::Lorem.sentence
+      name:   Faker::Lorem.sentence
     )
     item.update_attributes(created_at: rand(10.minutes .. 1.year).ago)
   end
@@ -29,13 +29,13 @@ require 'faker'
   member.save!
 
   admin = User.new(
-      name:     'Big Admin'
-      email:    'dpg@sfglaw.com'
+      name:     'Big Admin',
+      email:    'dpg@sfglaw.com',
       password: 'helloworld'
     )
-  member.skip_confirmation!
-  member.save!
+  admin.skip_confirmation!
+  admin.save!
 
   puts "seed finished!"
   puts "#{User.count} users created"
-  puts "#{Items.count} items created"
+  puts "#{Item.count} items created"
