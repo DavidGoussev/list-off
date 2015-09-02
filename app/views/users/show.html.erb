@@ -26,10 +26,18 @@
   <div class="col-md-8">
     <div class="jumbotron">
       <h2>to-do items</h2>
+
+    <div class='js-items'>
       <p>
         <%= render partial: 'items/item', collection: @user.items %>
       </p>
-      <p> <%= render partial: 'items/form', locals: { user: @user, item: @item } %></p>
+    </div>
+    <div class='new-item'>
+
+      <p>
+        <%= render 'items/form' %>
+      </p>
+    </div>
 
     </div>
   </div>

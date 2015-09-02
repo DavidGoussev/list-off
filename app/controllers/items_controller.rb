@@ -8,14 +8,21 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user = current_user
     @items = @user.items
+    @new_item = Item.new
 
     if @item.save
       flash.now[:notice] = "to-do item created!"
-      redirect_to @user
+      #redirect_to @user
     else
       flash.now[:error] = "error saving item, try again!"
-      render 'users/show'
+      #render 'users/show'
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   def destroy
