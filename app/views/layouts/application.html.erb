@@ -12,6 +12,10 @@
     <ul class="nav nav-tabs">
       <li><%= link_to "list-off", root_path %></li>
       <li><%= link_to "about", about_path %></li>
+      <% if current_user %>
+      <li><%= link_to "your to-do", user_path(current_user) %></li>
+      <% else %>
+      <% end %>
 
       <div class="pull-right user-info">
         <% if current_user %>
