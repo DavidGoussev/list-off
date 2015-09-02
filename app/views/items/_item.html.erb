@@ -1,5 +1,9 @@
-<h4><%= item.name %> </h4>
-    <small>
-        submitted <%= time_ago_in_words(item.created_at) %> ago
-        | <%= link_to "delete", [item.user, item], method: :delete %>
-    </small>
+<%= content_tag :div, class: 'media', id: "item-#{item.id}" do %>
+  <div class="media-body">
+      <h5><%= item.name %> </h5>
+          <small>
+              submitted <%= time_ago_in_words(item.created_at) %> ago
+               <%= link_to "", [item.user, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
+          </small>
+  </div>
+<% end %>

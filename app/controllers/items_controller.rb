@@ -10,25 +10,31 @@ class ItemsController < ApplicationController
     @items = @user.items
 
     if @item.save
-      flash[:notice] = "to-do item created!"
+      flash.now[:notice] = "to-do item created!"
       redirect_to @user
     else
-      flash[:error] = "error saving item, try again!"
+      flash.now[:error] = "error saving item, try again!"
       render 'users/show'
     end
   end
 
   def destroy
-  @user = User.find(params[:user_id])
-  @item = @user.items.find(params[:id])
+    @user = User.find(params[:user_id])
+    @item = @user.items.find(params[:id])
 
     if @item.destroy
       flash.now[:notice] = "item was removed"
-      redirect_to [@user]
+      #redirect_to [@user]
     else
       flash.now[:error] = "item was not removed"
-      redirect_to [@user]
+      #redirect_to [@user]
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   private

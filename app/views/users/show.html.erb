@@ -13,7 +13,7 @@
         <br>
         last signed in <%= time_ago_in_words(@user.created_at) %> ago
         <br>
-        <%= pluralize(@user.items.count, 'to-do item') %>
+        <div class='js-items-count'><%= pluralize(@user.items.count, 'to-do item') %></div>
       </small>
       <p>
         <br>
