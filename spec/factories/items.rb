@@ -11,8 +11,8 @@
 
 FactoryGirl.define do
   factory :item do
-    name "MyString"
-user nil
+    name "test to-do entry"
+    user
   end
 
 end
