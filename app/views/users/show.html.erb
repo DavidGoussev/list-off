@@ -9,11 +9,9 @@
       <h2><%= @user.name %></h2>
       <h4><%= @user.email %></h4>
       <small>
-        account created <%= @user.created_at.strftime("%m/%d/%Y") %>
-        <br>
-        last signed in <%= time_ago_in_words(@user.created_at) %> ago
-        <br>
-        <div class='js-items-count'><%= pluralize(@user.items.count, 'to-do item') %></div>
+          <li>account created <%= @user.created_at.strftime("%m/%d/%Y") %></li>
+          <li>last signed in <%= time_ago_in_words(@user.created_at) %> ago</li>
+          <li><div class='js-items-count'><%= pluralize(@user.items.count, 'to-do item') %></div></li>
       </small>
       <p>
         <br>
@@ -28,15 +26,10 @@
       <h2>to-do items</h2>
 
     <div class='js-items'>
-      <p>
-        <%= render partial: 'items/item', collection: @user.items %>
-      </p>
+      <%= render partial: 'items/item', collection: @user.items %>
     </div>
     <div class='new-item'>
-
-      <p>
-        <%= render 'items/form' %>
-      </p>
+      <%= render partial: 'items/form', locals: {item: @item} %>
     </div>
 
     </div>

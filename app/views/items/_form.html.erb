@@ -1,10 +1,11 @@
-<%= form_for [@user, Item.new], remote: true do |f| %>
+<p></p>
+<%= form_for [@user, item], remote: true do |f| %>
 
-  <% if Item.new.errors.any? %>
+  <% if item.errors.any? %>
      <div class="alert alert-danger">
        <h4><%= pluralize(item.errors.count, "error") %>:</h4>
        <ul>
-         <% Item.new.errors.full_messages.each do |msg| %>
+         <% item.errors.full_messages.each do |msg| %>
            <li><%= msg %></li>
          <% end %>
        </ul>
