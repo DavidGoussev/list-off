@@ -13,6 +13,9 @@ class Item < ActiveRecord::Base
 
   validates :name, length: { minimum: 2 }, presence: true
 
+  def delete_items
+    Item.where("created_at <= ?", Time.now - 7.days).destroy_all
+  end
 
   def days_left
     7 - (DateTime.now.utc.to_date - created_at.to_date).to_i
