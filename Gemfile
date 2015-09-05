@@ -70,6 +70,9 @@ gem 'jbuilder', '~> 2.0'
 #New Relic adds performance monitoring
 gem 'newrelic_rpm'
 
+#task scheduler
+gem 'whenever', :require => false
+
 #testing frameworks
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
