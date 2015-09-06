@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-feature 'User creates todo' do
+feature 'User creates item' do
   scenario 'Successfully' do
-    visit new_todo_path
+    visit '/items/new'
+    fill_in 'name', with: "feed dog before going to sleep."
+    click_button 'submit'
   end
 end
